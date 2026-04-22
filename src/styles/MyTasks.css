@@ -1,0 +1,174 @@
+/* Horizontal Row Layout */
+.tasks-rows-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 10px 0;
+}
+
+.tasks-row-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.tasks-row-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #dfe1e6;
+}
+
+.tasks-row-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #172b4d;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tasks-row-count {
+    background: #ebecf0;
+    color: #42526e;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 12px;
+}
+
+.tasks-horizontal-scroll {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 12px 4px 20px 4px;
+    /* Space for scrollbar and shadow */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Custom Scrollbar */
+.tasks-horizontal-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.tasks-horizontal-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.tasks-horizontal-scroll::-webkit-scrollbar-thumb {
+    background: #dfe1e6;
+    border-radius: 10px;
+    transition: background 0.2s;
+}
+
+.tasks-horizontal-scroll:hover::-webkit-scrollbar-thumb {
+    background: #c1c7d0;
+}
+
+/* Task Card Overrides for Horizontal View */
+.task-kanban-card {
+    flex-shrink: 0;
+    width: 320px;
+    /* Fixed width as requested */
+    animation: pop-in 0.3s ease-out forwards;
+}
+
+/* Status Icons/Colors */
+.tasks-row-section.todo .tasks-row-title::before {
+    content: '📌';
+}
+
+.tasks-row-section.in_progress .tasks-row-title::before {
+    content: '⚡';
+}
+
+.tasks-row-section.review .tasks-row-title::before {
+    content: '👀';
+}
+
+.tasks-row-section.done .tasks-row-title::before {
+    content: '✅';
+}
+
+/* Empty State Placeholder */
+.tasks-row-empty {
+    width: 100%;
+    padding: 24px;
+    background: #f4f5f7;
+    border: 2px dashed #dfe1e6;
+    border-radius: 8px;
+    color: #8a8d91;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Header Controls */
+.tasks-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 24px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.search-container {
+    position: relative;
+    flex: 1;
+    max-width: 360px;
+}
+
+.search-input-field {
+    width: 100%;
+    padding: 10px 12px 10px 40px;
+    border: 1px solid #dfe1e6;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s;
+}
+
+.search-input-field:focus {
+    outline: none;
+    border-color: #0084ff;
+    box-shadow: 0 0 0 3px rgba(0, 132, 255, 0.1);
+}
+
+.search-icon-overlay {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8a8d91;
+}
+
+/* Animations from previous version preserved */
+@keyframes flash-new {
+    0% {
+        background-color: rgba(255, 251, 230, 1);
+        box-shadow: 0 0 20px #ffc107, inset 0 0 10px rgba(255, 193, 7, 0.5);
+        border-color: #ffab00;
+    }
+
+    100% {
+        background-color: #ffffff;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    }
+}
+
+@keyframes pop-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
