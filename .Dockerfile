@@ -30,7 +30,7 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Expose port 80 (Azure dùng port này)
 EXPOSE 80
-#bebr
+
 # Start nginx
 CMD ["nginx", "-g", "daemon off;"]
 
