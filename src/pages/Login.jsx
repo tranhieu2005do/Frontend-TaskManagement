@@ -154,7 +154,7 @@ const Login = () => {
               className="resend-button"
               onClick={() => setIsForgotPasswordOpen(true)}
             >
-              Forgot Password (Click Here)?
+              Forgot Password ?
             </button>
           </div>
 
