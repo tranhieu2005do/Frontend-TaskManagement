@@ -52,3 +52,5 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/frontend-app:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/frontend-app:${{ github.sha }}
+      - name: Trigger Azure pull
+        run: curl -X POST "${{ secrets.AZURE_PULL_WEBHOOK_URL }}"
